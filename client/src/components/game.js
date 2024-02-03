@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Confetti from "react-confetti";
 import {
   Box,
   Button,
@@ -18,15 +19,16 @@ import {
   Grid,
   Flex,
   Heading,
+  useToast
 } from "@chakra-ui/react";
 
 const Game = () => {
   const [questionsAndAnswers] = useState({
-    "car with built in": ["wifi", "camera", "gps", "tv", "fridge", "speaker"],
-    "why do people": ["lie", "cheat", "steal", "cry", "fight", "laugh"], 
-    "how to make": ["money", "pancakes", "friends", "pizza", "love", "coffee"],
-    "best recipes for": ["chicken", "pasta", "cake", "cookies", "salad", "soup"],
-    "how to get rid of": ["acne", "lice", "ants", "stress", "debt", "fleas"],
+    "Car with built in?": ["wifi", "camera", "gps", "tv", "fridge", "speaker"],
+    "Why do people?": ["lie", "cheat", "steal", "cry", "fight", "laugh"], 
+    "How to make?": ["money", "pancakes", "friends", "pizza", "love", "coffee"],
+    "Best recipes for?": ["chicken", "pasta", "cake", "cookies", "salad", "soup"],
+    "How to get rid of?": ["acne", "lice", "ants", "stress", "debt", "fleas"],
 
     // ...other questions and answers
   });
@@ -36,6 +38,8 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [guesses, setGuesses] = useState(4); // Start with 4 guesses
   const {isOpen, onOpen, onClose } = useDisclosure();
+  const [showConfetti, setShowConfetti] = useState(false);
+  const toast = useToast();
 
   useEffect(() => {
     loadNewQuestion();
@@ -92,6 +96,17 @@ const Game = () => {
           setUserAnswer(""); // Clear the input field
         }
       }
+      if (score >= 10000 && !showConfetti) {
+        setShowConfetti(true);
+        toast({
+          title: "Congratulations!",
+          description: "You have learned German!",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top",
+        });
+      }
     }
   };
   
@@ -99,6 +114,7 @@ const Game = () => {
     onClose(); // Close the modal using onClose from useDisclosure
     setScore(0);           // Reset the score
     loadNewQuestion();     // Load a new question
+    setShowConfetti(false);
   };
   
 
@@ -116,7 +132,8 @@ const Game = () => {
       align="center"
       justify="center"
       p={5}
-      h="100vh"
+      h="100%"
+      w="100%"
       bg="black"
       color="white"
     >
@@ -130,12 +147,25 @@ const Game = () => {
         <Text fontSize="2xl" fontWeight="bold" mb={4} textAlign="left">
           Q: {currentQuestion}
         </Text>
+        <Stack spacing={4} direction="row" justify="center" align="center">
+          <Input
+            value={userAnswer}
+            onChange={handleInputChange}
+            placeholder="Type your guess here"
+            size="lg"
+            bg="white"
+            color="black"
+          />
+          <Button colorScheme="purple" onClick={handleSubmit}>Guess</Button>
+          <Button colorScheme="red" onClick={handleGiveUp}>Give Up</Button>
+        </Stack>
+        <br/>
         <Grid templateColumns="repeat(3, 1fr)" gap={6} mb={6}>
           {currentAnswers.map((answer, index) => (
             <Box
               key={index}
               p={2}
-              bg={revealedAnswers[answer.toLowerCase()] ? "green.300" : "purple.500"}
+              bg={revealedAnswers[answer.toLowerCase()] ? "green.600" : "purple.500"}
               borderRadius="md"
               minH="60px"
               display="flex"
@@ -144,7 +174,7 @@ const Game = () => {
               fontSize="lg"
               fontWeight="semibold"
             >
-              {revealedAnswers[answer.toLowerCase()] ? answer : 'Ans ' + (index + 1)}
+              {revealedAnswers[answer.toLowerCase()] ? answer : '' + ((index + 1)*1000)}
             </Box>
           ))}
         </Grid>
@@ -176,18 +206,6 @@ const Game = () => {
             </Box>
           </Box>
         </Flex>
-        <Stack spacing={4} direction="row" justify="center" align="center">
-          <Input
-            value={userAnswer}
-            onChange={handleInputChange}
-            placeholder="Type your guess here"
-            size="lg"
-            bg="white"
-            color="black"
-          />
-          <Button colorScheme="purple" onClick={handleSubmit}>Guess</Button>
-          <Button colorScheme="red" onClick={handleGiveUp}>Give Up</Button>
-        </Stack>
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
