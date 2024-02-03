@@ -7,8 +7,8 @@ import SimpleForm from './module/form/SimpleForm';
 function App() {
   return (
     <div className="App">
-      <Notifications />
-      <NotificationComponent />
+      {/* <Notifications />
+      <NotificationComponent /> */}
       {/* <SimpleChatBox /> */}
       <SimpleForm />
     </div>
