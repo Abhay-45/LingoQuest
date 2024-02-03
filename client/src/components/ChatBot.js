@@ -72,7 +72,7 @@ const TranslationApp = () => {
         bg="white"
         borderRadius="md"
         boxShadow="lg"
-        width="400px"
+        width="350px"
       >
         <VStack spacing="4" align="stretch">
           <Text

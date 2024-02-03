@@ -6,6 +6,8 @@ import SimpleForm from './module/form/SimpleForm';
 import Homepage from './components/homepage';
 import Api from './components/api';
 import Chatbot from './components/ChatBot';
+import {ChakraProvider} from '@chakra-ui/react';
+import Game from './components/game';
 
 function App() {
   return (
@@ -15,7 +17,11 @@ function App() {
       {/* <SimpleChatBox /> */}
       {/* <Homepage/> */}
       {/* <SimpleForm /> */}
+      <ChakraProvider>
       <Chatbot/>
+      <Game/>
+      </ChakraProvider>
+      
       {/* <Api></Api> */}
 
     </div>
