@@ -24,10 +24,11 @@ import {
 
 const Game = () => {
   const [questionsAndAnswers] = useState({
-    "Auto mit eingebautem?": ["WLAN", "Kamera", "GPS", "TV", "Kühlschrank", "Lautsprecher"],
-    "Die besten Rezepte für" : ["Huhn", "Nudeln", "Kuchen", "Reis", "Salat", "Suppe"],
-    "Wie man loswird": ["Akne", "Läuse", "Ameisen", "Stress", "Schulden", "Flöhe"],
-
+    "Car with built-in?": ["Radio", "Kamera", "GPS", "TV", "Kühlschrank", "Lautsprecher"],
+    "The best recipes for?" : ["Huhn", "Nudeln", "Kuchen", "Reis", "Salat", "Suppe"],
+    "How to get rid of?": ["Akne", "Läuse", "Ameisen", "Stress", "Schulden", "Flöhe"],
+    "How do you organize your?": ["Schrank", "Arbeitsbereich", "Zeitplan", "Dokumente", "Küche", "Finanzen"],
+    "How do you style your?": ["Haar", "Outfit", "Zuhause", "Garten", "Büro", "Schlafzimmer"],
     // ...other questions and answers
   });
   const [currentQuestion, setCurrentQuestion] = useState("");
@@ -149,7 +150,7 @@ const Game = () => {
           <Input
             value={userAnswer}
             onChange={handleInputChange}
-            placeholder="Type your guess here"
+            placeholder="Type your guess here (in German)"
             size="lg"
             bg="white"
             color="black"
