@@ -4,6 +4,8 @@ import NotificationComponent from './module/NotificationComponent';
 // import { SimpleChatBox } from './module/SimpleChatBox';
 import SimpleForm from './module/form/SimpleForm';
 import Homepage from './components/homepage';
+import Api from './components/api';
+import Chatbot from './components/ChatBot';
 
 function App() {
   return (
@@ -12,7 +14,10 @@ function App() {
       <NotificationComponent /> */}
       {/* <SimpleChatBox /> */}
       {/* <Homepage/> */}
-      <SimpleForm />
+      {/* <SimpleForm /> */}
+      <Chatbot/>
+      {/* <Api></Api> */}
+
     </div>
   );
 }
