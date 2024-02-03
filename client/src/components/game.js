@@ -24,11 +24,9 @@ import {
 
 const Game = () => {
   const [questionsAndAnswers] = useState({
-    "Car with built in?": ["wifi", "camera", "gps", "tv", "fridge", "speaker"],
-    "Why do people?": ["lie", "cheat", "steal", "cry", "fight", "laugh"], 
-    "How to make?": ["money", "pancakes", "friends", "pizza", "love", "coffee"],
-    "Best recipes for?": ["chicken", "pasta", "cake", "cookies", "salad", "soup"],
-    "How to get rid of?": ["acne", "lice", "ants", "stress", "debt", "fleas"],
+    "Auto mit eingebautem?": ["WLAN", "Kamera", "GPS", "TV", "Kühlschrank", "Lautsprecher"],
+    "Die besten Rezepte für" : ["Huhn", "Nudeln", "Kuchen", "Reis", "Salat", "Suppe"],
+    "Wie man loswird": ["Akne", "Läuse", "Ameisen", "Stress", "Schulden", "Flöhe"],
 
     // ...other questions and answers
   });
