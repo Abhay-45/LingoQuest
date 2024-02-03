@@ -5,8 +5,14 @@ import styled from 'styled-components'
 
 class SimpleForm extends Component {
     render() {
+        const config ={
+            width: "700px",
+            height: "700px", 
+          };
+
         return (
             <ChatBot
+               
                 steps={[
                     {
                         id: '1',
@@ -108,6 +114,7 @@ class SimpleForm extends Component {
                         end: true,
                     },
                 ]}
+                {...config}
             />
         );
     }
