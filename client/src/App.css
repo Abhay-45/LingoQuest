@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* This ensures the content is centered vertically on the viewport height */
 }
 
 .App-logo {
